@@ -10,7 +10,8 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.integer :sale
       #利益
       t.integer :profit
-
+      #フリーコメント
+      t.text :impress
 
 
       t.timestamps
