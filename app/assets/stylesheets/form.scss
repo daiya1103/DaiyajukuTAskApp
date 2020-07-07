@@ -1,0 +1,9 @@
+input{
+  &.count::after{
+    content: '個';
+  }
+
+  &.money:after{
+    content: '円';
+  }
+}
