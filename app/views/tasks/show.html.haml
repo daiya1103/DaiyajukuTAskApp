@@ -1,25 +1,36 @@
 .container
-  %h1
-    = @task.created_at
-    の日報
-  %table
-    %tbody
-      %tr
-        %th{:scope => "row"} 出品数
-        %td.n= @task.exihibits
-        %td 個
-      %tr
-        %th{:scope => "row"} 販売個数
-        %td.n= @task.solds
-        %td 個
-      %tr
-        %th{:scope => "row"} 売り上げ
-        %td.n= @task.sale
-        %td 円
-      %tr
-        %th{:scope => "row"} 利益
-        %td.n= @task.profit
-        %td 円
-      %tr
-        %th{:scope => "row"} 振り返り
-        %td{:colspan => '2'}= @task.impress
+  .card
+    %h5.card-header
+      = @task.created_at
+      の日報
+      - if user_signed_in? && current_user.tasks.exists?(id: @task.id)
+        = link_to task_path(@task), data: { method: 'delete', confirm: 'ほんまに削除しますか？' } do
+          %svg.bi.bi-trash{:fill => "currentColor", :height => "1em", :viewbox => "0 0 16 16", :width => "1em", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"}
+            %path{:d => "M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z", "fill-rule" => "evenodd"}
+        = link_to edit_task_path(@task) do
+          %svg.bi.bi-pencil-square{:fill => "currentColor", :height => "1em", :viewbox => "0 0 16 16", :width => "1em", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"}
+            %path{:d => "M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z", "fill-rule" => "evenodd"}
+    .card-body
+      %table.table
+        %tbody
+          %tr
+            %th 出品数
+            %td.number= @task.exihibits
+            %td.unit 個
+          %tr
+            %th 販売個数
+            %td.number= @task.solds
+            %td.unit 個
+          %tr
+            %th 売り上げ
+            %td.number= @task.sale
+            %td.unit 円
+          %tr
+            %th 利益
+            %td.number= @task.profit
+            %td.unit 円
+          %tr
+            %th 振り返り
+            %td.impress{:colspan => '2'}= @task.impress
