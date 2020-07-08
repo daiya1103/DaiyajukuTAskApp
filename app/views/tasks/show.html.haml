@@ -1,7 +1,7 @@
 .container
   .card
     %h5.card-header
-      = @task.created_at
+      = @task.created_at.strftime('%-m/%-d')
       の日報
       - if user_signed_in? && current_user.tasks.exists?(id: @task.id)
         = link_to task_path(@task), data: { method: 'delete', confirm: 'ほんまに削除しますか？' } do
