@@ -1,0 +1,50 @@
+@import './variables';
+$heart-size: 16px;
+$avatar-size: 32px;
+
+.card{
+  width: 320px;
+  margin: auto;
+
+  svg{
+    width:15px;
+    float: right;
+  }
+
+    th{
+      width: 100px;
+      height: 30px;
+    }
+
+    td.number{
+      font-size: 20px;
+      text-align: right;
+      width: 10px;
+    }
+
+    td.unit{
+      padding-top: 30px;
+      width: 20px;
+    }
+
+    td.impress{
+      width: 40px;
+    }
+  
+    &_heart {
+      display: flex;
+    }
+  
+      img {
+        width: $heart-size;
+        height: $heart-size;
+      }
+    &-header {
+      img {
+        width: $avatar-size;
+        height: $avatar-size;
+        border-radius: 100%;
+        margin-right: 8px;
+      }
+    }
+  }
