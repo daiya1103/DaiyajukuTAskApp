@@ -1,9 +1,11 @@
-input{
-  &.count::after{
-    content: '個';
-  }
+.task-form {
+  .count{
+    display: inline-flex;
 
-  &.money:after{
-    content: '円';
+    p{
+      font-size: 15px;
+      margin-left: 5px;
+      margin-top: 5px;
+    }
   }
 }

@@ -1,0 +1,25 @@
+.container
+  %h1
+    = @task.created_at
+    の日報
+  %table
+    %tbody
+      %tr
+        %th{:scope => "row"} 出品数
+        %td.n= @task.exihibits
+        %td 個
+      %tr
+        %th{:scope => "row"} 販売個数
+        %td.n= @task.solds
+        %td 個
+      %tr
+        %th{:scope => "row"} 売り上げ
+        %td.n= @task.sale
+        %td 円
+      %tr
+        %th{:scope => "row"} 利益
+        %td.n= @task.profit
+        %td 円
+      %tr
+        %th{:scope => "row"} 振り返り
+        %td{:colspan => '2'}= @task.impress

@@ -17,13 +17,17 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+    @task = Task.find(params[:id])
+  end
+
   def edit
 
   end
 
   private
     def task_params
-        params.require(:article).permit(
+        params.require(:task).permit(
           :exihibits,
           :solds,
           :sale,
