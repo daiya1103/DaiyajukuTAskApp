@@ -3,12 +3,43 @@ $heart-size: 16px;
 $avatar-size: 32px;
 
 .card{
-  width: 320px;
+  width: 100%;
   margin: auto;
 
+  &-head{
+    display: flex;
+    font-size: 20px;
+    padding-top: 10px;
+
+      &-name{
+        margin: 0 10px;
+        font-weight: bold;
+      }
+
+  }
+  .card_icon{
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    margin: ($avatar-size - $back-icon-size) / 2 10px 0;
+  }
+
+  &-body{
+    &-nippou{
+      width: 280px;
+      margin-left: 45px;
+      margin-top: -20px;
+    }
+
+    &-react{
+      display: flex;
+    }
+  }
+
   svg{
-    width:15px;
-    float: right;
+    width:10px;
+    width: 50%;
+
   }
 
     th{
@@ -23,7 +54,7 @@ $avatar-size: 32px;
     }
 
     td.unit{
-      padding-top: 30px;
+      padding-top: 20px;
       width: 20px;
     }
 
