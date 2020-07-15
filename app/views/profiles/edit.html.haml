@@ -1,0 +1,28 @@
+.container
+  %ul
+    - @profile.errors.full_messages.each do |m|
+      %li= m
+  .task-form
+    = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+      %div
+        = f.label :avatar, 'プロフィール画像'
+      %div
+        = f.file_field :avatar
+      %div
+        = f.label :nickname, 'ニックネーム'
+      %div
+        = f.text_field :nickname
+      %div
+        = f.label :enrollment_date, 'ダイヤ塾入会日'
+      %div
+        = f.date_field :enrollment_date, value: (f.object.enrollment_date || Time.now.strftime("%Y-%m-%d"))
+      %div
+        = f.label :target, '目標月利'
+      .count
+        = f.number_field :target
+        %p 円
+      %div
+        = f.label :theme, 'ダイヤ塾で達成したいこと'
+      %div
+        = f.text_area :theme
+      = f.submit '更新', class: 'btn btn-primary'
