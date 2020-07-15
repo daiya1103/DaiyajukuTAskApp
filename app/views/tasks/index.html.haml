@@ -1,9 +1,10 @@
-%h1 TaskApp
 - @tasks.each do |task|
   = link_to task_path(task) do
     .card
       .card-head
-        = image_tag 'default-avatar.png', class: 'card_icon'
+        %object
+          = link_to user_path(id: task.user.id) do
+            = image_tag 'default-avatar.png', class: 'card_icon'
         %p.card-head-name= task.user.username
         %p.card-head-day
           = task.created_at.month
