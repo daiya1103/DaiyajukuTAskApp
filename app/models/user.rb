@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
   has_many :tasks, dependent: :destroy
   has_one :profile, dependent: :destroy
+  has_many :todos, dependent: :destroy
   require 'date'
-  
+
   def avatar_image
     if profile&.avatar&.attached?
       profile.avatar
