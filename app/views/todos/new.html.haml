@@ -1,0 +1,15 @@
+.container
+  - @todo.errors.full_messages.each do |m|
+    %li= m
+  .todo-form
+    = form_with(model:@todo, url: todos_path, method: 'post', local: true) do |f|
+      %div
+        = f.label '日にち', :date_of
+      .count
+        = f.date_field :date_of
+        %p のToDoリスト
+      = f.fields_for :todocontents do |ff|
+        = render 'todocontent_fields', f: ff
+      .links
+        = link_to_add_association 'Add ToDo.', f, :todocontents
+      = f.submit '更新', class: 'btn btn-primary'
